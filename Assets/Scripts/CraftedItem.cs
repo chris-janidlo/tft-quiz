@@ -12,7 +12,7 @@ public class CraftedItem : Item
         return @$"{Name} ({Tier})
 {(string.IsNullOrWhiteSpace(Tag) ? "" : Tag)}
 
-{string.Join('\n', Recipe.Select(r => r.Name))}
+{string.Join('\n', Recipe.Select(r => r.Name).OrderBy(s => s))}
 
 {Effect}";
     }
