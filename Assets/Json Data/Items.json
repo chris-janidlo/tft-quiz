@@ -1,0 +1,662 @@
+{
+    "Components": [
+        {
+            "$id": "1",
+            "Name": "B.F. Sword",
+            "Effect": "+10 attack damage"
+        },
+        {
+            "$id": "2",
+            "Name": "Chain Vest",
+            "Effect": "+20 armor"
+        },
+        {
+            "$id": "3",
+            "Name": "Needlessly Large Rod",
+            "Effect": "+10 ability power"
+        },
+        {
+            "$id": "4",
+            "Name": "Negatron Cloak",
+            "Effect": "+20 magic resist"
+        },
+        {
+            "$id": "5",
+            "Name": "Recurve Bow",
+            "Effect": "+10% attack speed"
+        },
+        {
+            "$id": "6",
+            "Name": "Tear of the Goddess",
+            "Effect": "+15 mana"
+        },
+        {
+            "$id": "7",
+            "Name": "Sparring Gloves",
+            "Effect": "+5% crit chance\n+10% dodge chance"
+        },
+        {
+            "$id": "8",
+            "Name": "Giant's Belt",
+            "Effect": "+150 health"
+        },
+        {
+            "$id": "9",
+            "Name": "Spatula",
+            "Effect": ""
+        }
+    ],
+    "Crafted": [
+        {
+            "Name": "Shimmerscale Emblem",
+            "Effect": "Unit gains the Shimmerscale trait",
+            "Recipe": [
+                {
+                    "$ref": "9"
+                },
+                {
+                    "$ref": "1"
+                }
+            ],
+            "Tier": "X",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Cavalier Emblem",
+            "Effect": "Unit gains the Cavalier trait",
+            "Recipe": [
+                {
+                    "$ref": "9"
+                },
+                {
+                    "$ref": "2"
+                }
+            ],
+            "Tier": "X",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Guardian Emblem",
+            "Effect": "Unit gains the Guardian trait",
+            "Recipe": [
+                {
+                    "$ref": "9"
+                },
+                {
+                    "$ref": "8"
+                }
+            ],
+            "Tier": "X",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Dragonmancer Emblem",
+            "Recipe": [
+                {
+                    "$ref": "9"
+                },
+                {
+                    "$ref": "3"
+                }
+            ],
+            "Effect": "Unit gains the Dragonmancer trait",
+            "Tier": "X",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Mirage Emblem",
+            "Recipe": [
+                {
+                    "$ref": "9"
+                },
+                {
+                    "$ref": "4"
+                }
+            ],
+            "Effect": "Unit gains the Mirage trait",
+            "Tier": "X",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Swiftshot Emblem",
+            "Recipe": [
+                {
+                    "$ref": "9"
+                },
+                {
+                    "$ref": "5"
+                }
+            ],
+            "Effect": "Unit gains the Swiftshot trait",
+            "Tier": "X",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Lagoon Emblem",
+            "Recipe": [
+                {
+                    "$ref": "9"
+                },
+                {
+                    "$ref": "7"
+                }
+            ],
+            "Effect": "Unit gains the Lagoon trait",
+            "Tier": "X",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Mage Emblem",
+            "Recipe": [
+                {
+                    "$ref": "9"
+                },
+                {
+                    "$ref": "6"
+                }
+            ],
+            "Effect": "Unit gains the Mage trait",
+            "Tier": "X",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Tactician's Crown",
+            "Recipe": [
+                {
+                    "$ref": "9"
+                },
+                {
+                    "$ref": "9"
+                }
+            ],
+            "Effect": "+1 max team size",
+            "Tier": "S"
+        },
+        {
+            "Name": "Deathblade",
+            "Recipe": [
+                {
+                    "$ref": "1"
+                },
+                {
+                    "$ref": "1"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "+15/30/45★ Attack Damage"
+        },
+        {
+            "Name": "Edge of Night",
+            "Recipe": [
+                {
+                    "$ref": "1"
+                },
+                {
+                    "$ref": "2"
+                }
+            ],
+            "Tier": "C",
+            "Effect": "Once per combat, at 60% Health: lose debuffs, short stealth, +40% attack speed",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Zeke's Herald",
+            "Recipe": [
+                {
+                    "$ref": "1"
+                },
+                {
+                    "$ref": "8"
+                }
+            ],
+            "Tier": "D",
+            "Effect": "Combat start: +30% Attack Speed to unit and adjacent allies on same row",
+            "Tag": "Aura"
+        },
+        {
+            "Name": "Hextech Gunblade",
+            "Recipe": [
+                {
+                    "$ref": "1"
+                },
+                {
+                    "$ref": "3"
+                }
+            ],
+            "Tier": "A",
+            "Effect": "25% Omnivamp. Also heals ally with lowest percent Health for same amount"
+        },
+        {
+            "Name": "Bloodthirster",
+            "Recipe": [
+                {
+                    "$ref": "1"
+                },
+                {
+                    "$ref": "4"
+                }
+            ],
+            "Tier": "S",
+            "Effect": "25% Omnivamp\nOnce per combat, at 40% Health: gain shield for 25% of max Health, lives up to 5 seconds"
+        },
+        {
+            "Name": "Giant Slayer",
+            "Recipe": [
+                {
+                    "$ref": "1"
+                },
+                {
+                    "$ref": "5"
+                }
+            ],
+            "Tier": "A",
+            "Effect": "+20% damage on abilities and attacks, +45% instead if target's max Health > 2200"
+        },
+        {
+            "Name": "Infinity Edge",
+            "Recipe": [
+                {
+                    "$ref": "1"
+                },
+                {
+                    "$ref": "7"
+                }
+            ],
+            "Tier": "A",
+            "Effect": "+60% Critical Strike Chance, +10% Critical Strike Damage\nConverts excess Critical Strike Chance percentage points to Critical Strike Damage",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Spear of Shojin",
+            "Recipe": [
+                {
+                    "$ref": "1"
+                },
+                {
+                    "$ref": "6"
+                }
+            ],
+            "Tier": "S",
+            "Effect": "+20 Ability Power\n+5 mana per basic attack"
+        },
+        {
+            "Name": "Bramble Vest",
+            "Recipe": [
+                {
+                    "$ref": "2"
+                },
+                {
+                    "$ref": "2"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "+40 Armor\n-75% damage from incoming crits\nOnce every 2.5 seconds, when hit by an attack, deal 75/100/150★ magic damage to all nearby enemies",
+            "Tag": "Direct Damage"
+        },
+        {
+            "Name": "Sunfire Cape",
+            "Recipe": [
+                {
+                    "$ref": "2"
+                },
+                {
+                    "$ref": "8"
+                }
+            ],
+            "Tier": "A",
+            "Effect": "+150 Health\nEvery 2 seconds: burns an enemy within 2 hexes",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Locket of the Iron Solari",
+            "Recipe": [
+                {
+                    "$ref": "2"
+                },
+                {
+                    "$ref": "3"
+                }
+            ],
+            "Tier": "D",
+            "Effect": "Combat Start: +300/350/400★ shield to unit and allies within 2 hexes on same row (lasts 15 seconds)",
+            "Tag": "Aura"
+        },
+        {
+            "Name": "Gargoyle Stoneplate",
+            "Recipe": [
+                {
+                    "$ref": "2"
+                },
+                {
+                    "$ref": "4"
+                }
+            ],
+            "Tier": "S",
+            "Effect": "(+16 armor, +16 magic resist) per enemy targeting unit"
+        },
+        {
+            "Name": "Titan's Resolve",
+            "Recipe": [
+                {
+                    "$ref": "2"
+                },
+                {
+                    "$ref": "5"
+                }
+            ],
+            "Tier": "A",
+            "Effect": "On attacking or taking damage: gain 1 stack\n+2 Attack Damage and +2 Ability Power per stack\nMax 25 stacks\nAt full stacks, +25 armor and +25 magic resist"
+        },
+        {
+            "Name": "Shroud of Stillness",
+            "Recipe": [
+                {
+                    "$ref": "2"
+                },
+                {
+                    "$ref": "7"
+                }
+            ],
+            "Tier": "D",
+            "Effect": "Combat start: shoot beam at enemies, hit units have +35% to max mana until they cast",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Protector's Vow",
+            "Recipe": [
+                {
+                    "$ref": "2"
+                },
+                {
+                    "$ref": "6"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "Once per combat, at 50% Health: allies within 3 hexes gain:\n* 20% max health shield for up to 2 seconds\n* +15 armor and +15 magic resist (for the rest of combat)",
+            "Tag": "Aura"
+        },
+        {
+            "Name": "Warmog's Armor",
+            "Recipe": [
+                {
+                    "$ref": "8"
+                },
+                {
+                    "$ref": "8"
+                }
+            ],
+            "Tier": "A",
+            "Effect": "+700 Health"
+        },
+        {
+            "Name": "Morellonomicon",
+            "Recipe": [
+                {
+                    "$ref": "8"
+                },
+                {
+                    "$ref": "3"
+                }
+            ],
+            "Tier": "S",
+            "Effect": "+20 Ability Power\nWhen hitting an enemy with magic or true damage from an ability: burns target",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Zephyr",
+            "Recipe": [
+                {
+                    "$ref": "8"
+                },
+                {
+                    "$ref": "4"
+                }
+            ],
+            "Tier": "C",
+            "Effect": "Combat start: removes enemy closest to opposite hex of unit for 5 seconds, ignoring CC immunity",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Zz'Rot Portal",
+            "Recipe": [
+                {
+                    "$ref": "8"
+                },
+                {
+                    "$ref": "5"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "Combat start: taunt enemies within 4 hexes\nOn death: creates Voidspawn, which taunts nearby enemies. Voidspans created for summons are 25% effective"
+        },
+        {
+            "Name": "Banshee's Claw",
+            "Recipe": [
+                {
+                    "$ref": "8"
+                },
+                {
+                    "$ref": "7"
+                }
+            ],
+            "Tier": "D",
+            "Effect": "Combat start: unit and adjacent, same-row allies get shield that blocks up to 600 damage from first enemy ability",
+            "Tag": "Aura"
+        },
+        {
+            "Name": "Redemption",
+            "Recipe": [
+                {
+                    "$ref": "8"
+                },
+                {
+                    "$ref": "6"
+                }
+            ],
+            "Tier": "C",
+            "Effect": "Every 5 seconds: heal allies within 1 hex. they receive:\n* 12% of their missing health\n* 25% less multi-target damage for 5 seconds (non-stacking)"
+        },
+        {
+            "Name": "Rabadon's Deathcap",
+            "Recipe": [
+                {
+                    "$ref": "3"
+                },
+                {
+                    "$ref": "3"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "+55 Ability Power"
+        },
+        {
+            "Name": "Ionic Spark",
+            "Recipe": [
+                {
+                    "$ref": "3"
+                },
+                {
+                    "$ref": "4"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "Enemies within 2 hexes receive the following debuffs:\n* 50% less Magic Resist\n* When they cast an ability: they take 185% of max Mana as magic damage",
+            "Tag": "Direct Damage"
+        },
+        {
+            "Name": "Guinsoo's Rageblade",
+            "Recipe": [
+                {
+                    "$ref": "3"
+                },
+                {
+                    "$ref": "5"
+                }
+            ],
+            "Tier": "S",
+            "Effect": "On attack: +6% Attack Speed, stacking\n[note that there's a cap of 5 attacks per second]"
+        },
+        {
+            "Name": "Jeweled Gauntlet",
+            "Recipe": [
+                {
+                    "$ref": "3"
+                },
+                {
+                    "$ref": "7"
+                }
+            ],
+            "Tier": "A",
+            "Effect": "+10% critical strike damage\n+30 ability power\nmagic and true damage from an ability can crit"
+        },
+        {
+            "Name": "Archangel's Staff",
+            "Recipe": [
+                {
+                    "$ref": "3"
+                },
+                {
+                    "$ref": "6"
+                }
+            ],
+            "Tier": "S",
+            "Effect": "+ 10 ability power\nEvery 5 seconds: +20 ability power, stacking (only procs at combat start?)"
+        },
+        {
+            "Name": "Dragon's Claw",
+            "Recipe": [
+                {
+                    "$ref": "4"
+                },
+                {
+                    "$ref": "4"
+                }
+            ],
+            "Tier": "C",
+            "Effect": "+80 magic resist\nEvery 2 seconds: regen 1.2% of max health per enemy targeting unit\nIf unit is a Dragon, +20% to 'all bonuses and effects' (unsure if that's for just the item, or for everything on the unit)"
+        },
+        {
+            "Name": "Runaan's Hurricane",
+            "Recipe": [
+                {
+                    "$ref": "4"
+                },
+                {
+                    "$ref": "5"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "+10 Attack Damage\nOn attack: deal 70% attack damage to 'a nearby enemy' as physical damage",
+            "Tag": "Direct Damage"
+        },
+        {
+            "Name": "Quicksilver",
+            "Recipe": [
+                {
+                    "$ref": "4"
+                },
+                {
+                    "$ref": "7"
+                }
+            ],
+            "Tier": "C",
+            "Effect": "+20% attack speed\nCombat start: CC immunity for 15 seconds",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Chalice of Power",
+            "Recipe": [
+                {
+                    "$ref": "4"
+                },
+                {
+                    "$ref": "6"
+                }
+            ],
+            "Tier": "D",
+            "Effect": "Combat start: +30 ability power to unit and adjacent same-row allies",
+            "Tag": "Aura"
+        },
+        {
+            "Name": "Rapid Firecannon",
+            "Recipe": [
+                {
+                    "$ref": "5"
+                },
+                {
+                    "$ref": "5"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "+30% attack speed\n+1 attack range\nAttacks can't miss"
+        },
+        {
+            "Name": "Last Whisper",
+            "Recipe": [
+                {
+                    "$ref": "5"
+                },
+                {
+                    "$ref": "7"
+                }
+            ],
+            "Tier": "C",
+            "Effect": "+10% attack speed\nOn dealing physical damage: target's armor is reduced by 50% for 5 seconds (non-stacking)",
+            "Tag": "Unique"
+        },
+        {
+            "Name": "Statikk Shiv",
+            "Recipe": [
+                {
+                    "$ref": "5"
+                },
+                {
+                    "$ref": "6"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "+10% attack speed\nOn every 3rd attack: chain lightening bounces to 4 enemie, who each receive:\n* 50 magic damage\n* 50% reduced magic resist for 5 seconds",
+            "Tag": "Direct Damage"
+        },
+        {
+            "Name": "Thief's Gloves",
+            "Recipe": [
+                {
+                    "$ref": "7"
+                },
+                {
+                    "$ref": "7"
+                }
+            ],
+            "Tier": "A",
+            "Effect": "Consumes 3 item slots\n\nEach round: equip 2 random items"
+        },
+        {
+            "Name": "Hand of Justice",
+            "Recipe": [
+                {
+                    "$ref": "7"
+                },
+                {
+                    "$ref": "6"
+                }
+            ],
+            "Tier": "A",
+            "Effect": "Grants:\n* +15 attack damage and +15 ability power\n* 15% Omnivamp\nEach round, a random one of these two bullets is doubled"
+        },
+        {
+            "Name": "Blue Buff",
+            "Recipe": [
+                {
+                    "$ref": "6"
+                },
+                {
+                    "$ref": "6"
+                }
+            ],
+            "Tier": "B",
+            "Effect": "+20 mana\nAfter casting ability: set mana to 20",
+            "Tag": "Unique"
+        }
+    ]
+}
