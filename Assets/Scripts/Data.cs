@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -19,7 +20,8 @@ public class Data : ScriptableObject
 
     public Sprite GetItemIcon(Item item)
     {
-        return Resources.Load<Sprite>($"{itemIconResourcePathPrefix}/{item.Name}");
+        return Resources.Load<Sprite>($"{itemIconResourcePathPrefix}/{item.Name}") ??
+               throw new ArgumentException($"could not find sprite for {item.Name}");
     }
 
     public class Format
