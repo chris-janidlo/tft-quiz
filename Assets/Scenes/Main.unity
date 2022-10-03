@@ -1021,8 +1021,7 @@ MonoBehaviour:
   questionParent: {fileID: 1860501903}
   roundInterstitialContainer: {fileID: 691304449}
   questionInterstitialContainer: {fileID: 1933224675}
-  roundInterstitialDelay: 0.2
-  questionInterstitialDelay: 0.2
+  interstitialFrameDelay: 3
   roundState: {fileID: 11400000, guid: 81c7746a56ecce6438a4e597658c6e3a, type: 2}
   timer: {fileID: 11400000, guid: 97cfb46abfb275541812856d89c824d2, type: 2}
 --- !u!4 &1368070976

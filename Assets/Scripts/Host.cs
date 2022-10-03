@@ -11,7 +11,7 @@ public class Host : MonoBehaviour
 
     [SerializeField] private Transform questionParent;
     [SerializeField] private GameObject roundInterstitialContainer, questionInterstitialContainer;
-    [SerializeField] private float roundInterstitialDelay, questionInterstitialDelay;
+    [SerializeField] private int interstitialFrameDelay;
 
     [SerializeField] private RoundState roundState;
     [SerializeField] private Timer timer;
@@ -36,10 +36,10 @@ public class Host : MonoBehaviour
         for (var _ = 0; _ < questionsPerRound; _++)
         {
             yield return AskNextQuestion();
-            yield return WaitOnInterstitial(questionInterstitialContainer, questionInterstitialDelay);
+            yield return WaitOnInterstitial(questionInterstitialContainer);
         }
 
-        yield return WaitOnInterstitial(roundInterstitialContainer, roundInterstitialDelay);
+        yield return WaitOnInterstitial(roundInterstitialContainer);
     }
 
     private IEnumerator AskNextQuestion()
@@ -60,14 +60,14 @@ public class Host : MonoBehaviour
         question.Cleanup();
     }
 
-    private static IEnumerator WaitOnInterstitial(GameObject container, float delay)
+    private IEnumerator WaitOnInterstitial(GameObject container)
     {
         container.SetActive(true);
 
-        yield return new WaitForSeconds(delay);
+        var i = interstitialFrameDelay;
         while (true)
         {
-            if (Input.anyKey) break;
+            if (i-- <= 0 && Input.anyKey) break;
             yield return null;
         }
 
