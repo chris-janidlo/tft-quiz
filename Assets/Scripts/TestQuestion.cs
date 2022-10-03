@@ -11,8 +11,7 @@ public class TestQuestion : Question
 
     public override async UniTask<bool> Ask()
     {
-        var item = data.Values.Crafted.PickRandom();
-        image.sprite = data.GetItemIcon(item);
+        image.sprite = data.Values.Crafted.PickRandom().Icon;
         await answer.OnClickAsync();
         return true;
     }

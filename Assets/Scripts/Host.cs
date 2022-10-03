@@ -36,6 +36,7 @@ public class Host : MonoBehaviour
         for (var _ = 0; _ < questionsPerRound; _++)
         {
             yield return AskNextQuestion();
+            // TODO: instead of a static interstitial, add a method to Questions for showing results (either explaining what you got wrong or saying "Correct!")
             yield return WaitOnInterstitial(questionInterstitialContainer);
         }
 

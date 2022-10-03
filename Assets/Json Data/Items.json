@@ -2,7 +2,7 @@
     "Components": [
         {
             "$id": "1",
-            "Name": "B.F. Sword",
+            "Name": "B. F. Sword",
             "Effect": "+10 attack damage"
         },
         {
