@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83aeb58eaca8de248a0a50e59773a44a, type: 3}
-  m_Name: Data Container
+  m_Script: {fileID: 11500000, guid: 99797585216603f44b9e1742656b063e, type: 3}
+  m_Name: Timer
   m_EditorClassIdentifier: 
-  dataSource: {fileID: 4900000, guid: d1f82d447dd08c8438bcfb1a38bc9328, type: 3}
-  itemIconResourcePathPrefix: Item Icons

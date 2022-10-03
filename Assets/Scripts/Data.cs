@@ -6,15 +6,20 @@ using UnityEngine;
 public class Data : ScriptableObject
 {
     [SerializeField] private TextAsset dataSource;
+    [SerializeField] private string itemIconResourcePathPrefix;
 
     public Format Values { get; private set; }
-
 
     public void Load()
     {
         if (Values != null) return;
 
         Values = JsonConvert.DeserializeObject<Format>(dataSource.text);
+    }
+
+    public Sprite GetItemIcon(Item item)
+    {
+        return Resources.Load<Sprite>($"{itemIconResourcePathPrefix}/{item.Name}");
     }
 
     public class Format
