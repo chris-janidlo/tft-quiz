@@ -8,6 +8,11 @@ public abstract class Question : MonoBehaviour
         return UniTask.FromResult(true);
     }
 
+    public virtual UniTask GiveFeedback()
+    {
+        return UniTask.CompletedTask;
+    }
+
     public virtual void Cleanup()
     {
         Destroy(gameObject);

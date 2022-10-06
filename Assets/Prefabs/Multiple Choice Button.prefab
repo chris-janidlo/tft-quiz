@@ -202,6 +202,13 @@ MonoBehaviour:
   button: {fileID: 8617821056094711854}
   selectedTint: {r: 1, g: 1, b: 1, a: 1}
   deselectedTint: {r: 1, g: 1, b: 1, a: 0.5019608}
+  gradingTint:
+    m_enums: 01000000000000000300000002000000
+    m_values:
+    - {r: 1, g: 1, b: 1, a: 0.5019608}
+    - {r: 0, g: 1, b: 0, a: 1}
+    - {r: 1, g: 0, b: 0, a: 0.5019608}
+    - {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &8617821056094711855
 MonoBehaviour:
   m_ObjectHideFlags: 0

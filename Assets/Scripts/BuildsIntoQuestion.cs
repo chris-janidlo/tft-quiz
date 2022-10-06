@@ -1,45 +1,33 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using crass;
 using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BuildsIntoQuestion : Question
 {
     [SerializeField] private int numComponents;
+    [SerializeField] private string submitPromptText, continuePromptText;
 
     [SerializeField] private LayoutGroup componentContainer, craftedItemsContainer;
-    [SerializeField] private Button submitButton;
+    [SerializeField] private Button actionButton;
+    [SerializeField] private TextMeshProUGUI actionButtonPrompt;
+    [SerializeField] private GameObject prompt, correctAnswerTitle, incorrectAnswerTitle;
 
     [SerializeField] private Data data;
     [SerializeField] private MultipleChoiceItemButton buttonPrefab;
     [SerializeField] private Image componentPrefab;
 
+    private List<MultipleChoiceItemButton> _answerButtons;
+    private bool _correct;
 
     public override async UniTask<bool> Ask()
     {
-        HashSet<CraftedItem> selectedAnswers = new(), expectedAnswers = new();
-
-        void Callback(Item i)
-        {
-            if (i is not CraftedItem crafted) throw new Exception("this shouldn't happen");
-
-            if (selectedAnswers.Contains(crafted))
-                selectedAnswers.Remove(crafted);
-            else
-                selectedAnswers.Add(crafted);
-        }
-
-        Dictionary<(Item, Item), CraftedItem> recipesToResults = new();
-        foreach (var crafted in data.Values.Crafted.OrderBy(c => c.Name))
-        {
-            var button = Instantiate(buttonPrefab, craftedItemsContainer.transform);
-            button.Initialize(crafted, Callback);
-
-            recipesToResults[SortedRecipeTuple(crafted.Recipe)] = crafted;
-        }
+        correctAnswerTitle.SetActive(false);
+        incorrectAnswerTitle.SetActive(false);
+        HashSet<CraftedItem> correctAnswers = new();
 
         List<Item> seenComponents = new();
         for (var _ = 0; _ < numComponents; _++)
@@ -48,25 +36,41 @@ public class BuildsIntoQuestion : Question
             Instantiate(componentPrefab, componentContainer.transform).sprite = component.Icon;
 
             foreach (var seen in seenComponents)
-                expectedAnswers.Add(recipesToResults[SortedRecipeTuple(component, seen)]);
+                correctAnswers.Add(data.GetCombination(component, seen));
 
             seenComponents.Add(component);
         }
 
-        await submitButton.OnClickAsync();
+        _answerButtons = new List<MultipleChoiceItemButton>();
+        foreach (var crafted in data.Values.Crafted.OrderBy(c => c.Name))
+        {
+            var button = Instantiate(buttonPrefab, craftedItemsContainer.transform);
+            var isAnswer = correctAnswers.Contains(crafted);
+            button.Initialize(crafted, isAnswer);
+            _answerButtons.Add(button);
+        }
 
-        return selectedAnswers.SetEquals(expectedAnswers);
+        actionButtonPrompt.text = submitPromptText;
+        await actionButton.OnClickAsync();
+
+        return _correct = !_answerButtons.Any(b => b.CorrectnessState is
+            MultipleChoiceItemButton.Correctness.IncorrectlyDeselected or
+            MultipleChoiceItemButton.Correctness.IncorrectlySelected);
     }
 
-    private static (Item, Item) SortedRecipeTuple(IReadOnlyList<Item> recipe)
+    public override async UniTask GiveFeedback()
     {
-        return SortedRecipeTuple(recipe[0], recipe[1]);
-    }
+        prompt.SetActive(false);
 
-    private static (Item, Item) SortedRecipeTuple(Item a, Item b)
-    {
-        return string.Compare(a.Name, b.Name, StringComparison.Ordinal) < 0
-            ? (a, b)
-            : (b, a);
+        if (_correct)
+            correctAnswerTitle.SetActive(true);
+        else
+            incorrectAnswerTitle.SetActive(true);
+
+        foreach (var button in _answerButtons)
+            button.RevealGrade();
+
+        actionButtonPrompt.text = continuePromptText;
+        await actionButton.OnClickAsync();
     }
 }

@@ -10,7 +10,7 @@ public class Host : MonoBehaviour
     [SerializeField] private BagRandomizer<Question> questions;
 
     [SerializeField] private Transform questionParent;
-    [SerializeField] private GameObject roundInterstitialContainer, questionInterstitialContainer;
+    [SerializeField] private GameObject roundInterstitialContainer;
     [SerializeField] private int interstitialFrameDelay;
 
     [SerializeField] private RoundState roundState;
@@ -31,14 +31,8 @@ public class Host : MonoBehaviour
     {
         roundState.Initialize(questionsPerRound);
         roundInterstitialContainer.SetActive(false);
-        questionInterstitialContainer.SetActive(false);
 
-        for (var _ = 0; _ < questionsPerRound; _++)
-        {
-            yield return AskNextQuestion();
-            // TODO: instead of a static interstitial, add a method to Questions for showing results (either explaining what you got wrong or saying "Correct!")
-            yield return WaitOnInterstitial(questionInterstitialContainer);
-        }
+        for (var _ = 0; _ < questionsPerRound; _++) yield return AskNextQuestion();
 
         yield return WaitOnInterstitial(roundInterstitialContainer);
     }
@@ -57,6 +51,8 @@ public class Host : MonoBehaviour
             roundState.RightAnswers++;
         else
             roundState.WrongAnswers++;
+
+        yield return question.GiveFeedback().ToCoroutine();
 
         question.Cleanup();
     }
