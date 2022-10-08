@@ -19,6 +19,7 @@ public class MultipleChoiceItemButton : MonoBehaviour
     [SerializeField] private Color selectedTint, deselectedTint;
     [SerializeField] private EnumMap<Correctness, Color> gradingTint;
 
+    private Item _item;
     private bool _selected, _isAnswer;
 
     public Correctness CorrectnessState { get; private set; }
@@ -32,6 +33,7 @@ public class MultipleChoiceItemButton : MonoBehaviour
     public void Initialize(Item item, bool isAnswer)
     {
         _isAnswer = isAnswer;
+        _item = item;
         icon.sprite = item.Icon;
         if (item is CraftedItem crafted) tier.text = crafted.Tier.ToString();
 
@@ -41,6 +43,8 @@ public class MultipleChoiceItemButton : MonoBehaviour
     public void RevealGrade()
     {
         icon.color = gradingTint[CorrectnessState];
+        if (CorrectnessState is Correctness.IncorrectlyDeselected or Correctness.IncorrectlySelected)
+            Debug.Log($"{CorrectnessState}: {_item}");
     }
 
     private void OnButtonClick()
