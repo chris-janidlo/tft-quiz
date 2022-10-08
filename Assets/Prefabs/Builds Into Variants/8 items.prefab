@@ -119,6 +119,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7887756061218431683, guid: e9297cade6f9a2a4ab09af363643c856,
         type: 3}
+      propertyPath: exclusions
+      value: 121
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887756061218431683, guid: e9297cade6f9a2a4ab09af363643c856,
+        type: 3}
       propertyPath: numComponents
       value: 8
       objectReference: {fileID: 0}
