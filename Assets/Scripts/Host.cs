@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using crass;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -7,7 +10,7 @@ public class Host : MonoBehaviour
 {
     [SerializeField] private float timePerQuestion = 30;
     [SerializeField] private int questionsPerRound;
-    [SerializeField] private BagRandomizer<Question> questions;
+    [SerializeField] private List<WeightedQuestion> questions;
 
     [SerializeField] private Transform questionParent;
     [SerializeField] private GameObject roundInterstitialContainer;
@@ -16,8 +19,11 @@ public class Host : MonoBehaviour
     [SerializeField] private RoundState roundState;
     [SerializeField] private Timer timer;
 
+    private BagRandomizer<Question> _questionBag;
+
     private IEnumerator Start()
     {
+        InitializeQuestionBag();
         while (true) yield return DoRound();
         // ReSharper disable once IteratorNeverReturns - infinite game loop
     }
@@ -25,6 +31,18 @@ public class Host : MonoBehaviour
     private void Update()
     {
         timer.Update();
+    }
+
+    private void InitializeQuestionBag()
+    {
+        _questionBag = new BagRandomizer<Question>
+        {
+            Items = new List<Question>()
+        };
+
+        foreach (var wq in questions)
+            // could do fancy math trying to minimize the number of copies added while still respecting relative weights
+            _questionBag.Items.AddRange(Enumerable.Repeat(wq.Question, wq.Weight));
     }
 
     private IEnumerator DoRound()
@@ -39,7 +57,7 @@ public class Host : MonoBehaviour
 
     private IEnumerator AskNextQuestion()
     {
-        var question = Instantiate(questions.GetNext(), questionParent);
+        var question = Instantiate(_questionBag.GetNext(), questionParent);
 
         var answer = question.Ask();
         timer.Begin(timePerQuestion);
@@ -69,5 +87,12 @@ public class Host : MonoBehaviour
         }
 
         container.SetActive(false);
+    }
+
+    [Serializable]
+    public struct WeightedQuestion
+    {
+        public Question Question;
+        public int Weight;
     }
 }
