@@ -13,11 +13,11 @@ public class MultipleChoiceItemButton : MonoBehaviour
         IncorrectlyDeselected
     }
 
-    [SerializeField] private Image icon;
+    [SerializeField] private Image itemIcon, feedbackIcon;
     [SerializeField] private TextMeshProUGUI tier;
     [SerializeField] private Button button;
     [SerializeField] private Color selectedTint, deselectedTint;
-    [SerializeField] private EnumMap<Correctness, Color> gradingTint;
+    [SerializeField] private EnumMap<Correctness, Sprite> feedbackIcons;
 
     private Item _item;
     private bool _selected, _isAnswer;
@@ -26,7 +26,7 @@ public class MultipleChoiceItemButton : MonoBehaviour
 
     private void Start()
     {
-        icon.color = deselectedTint;
+        itemIcon.color = deselectedTint;
         button.onClick.AddListener(OnButtonClick);
     }
 
@@ -34,15 +34,15 @@ public class MultipleChoiceItemButton : MonoBehaviour
     {
         _isAnswer = isAnswer;
         _item = item;
-        icon.sprite = item.Icon;
+        itemIcon.sprite = item.Icon;
         if (item is CraftedItem crafted) tier.text = crafted.Tier.ToString();
 
         UpdateCorrectness();
     }
 
-    public void RevealGrade()
+    public void GiveFeedback()
     {
-        icon.color = gradingTint[CorrectnessState];
+        feedbackIcon.sprite = feedbackIcons[CorrectnessState];
         if (CorrectnessState is Correctness.IncorrectlyDeselected or Correctness.IncorrectlySelected)
             Debug.Log($"{CorrectnessState}: {_item}");
     }
@@ -50,7 +50,7 @@ public class MultipleChoiceItemButton : MonoBehaviour
     private void OnButtonClick()
     {
         _selected = !_selected;
-        icon.color = _selected ? selectedTint : deselectedTint;
+        itemIcon.color = _selected ? selectedTint : deselectedTint;
 
         UpdateCorrectness();
     }

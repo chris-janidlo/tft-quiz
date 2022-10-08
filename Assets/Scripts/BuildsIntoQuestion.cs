@@ -103,7 +103,7 @@ public class BuildsIntoQuestion : Question
             incorrectAnswerTitle.SetActive(true);
 
         foreach (var button in _answerButtons)
-            button.RevealGrade();
+            button.GiveFeedback();
 
         actionButtonPrompt.text = continuePromptText;
         await actionButton.OnClickAsync();
