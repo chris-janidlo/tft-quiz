@@ -82,6 +82,7 @@ public class BuildsIntoQuestion : Question
             var button = Instantiate(buttonPrefab, craftedItemsContainer.transform);
             var isAnswer = correctAnswers.Contains(crafted);
             button.Initialize(crafted, isAnswer);
+            button.tooltipInclusions &= ~MultipleChoiceItemButton.TooltipField.Recipe;
             _answerButtons.Add(button);
         }
 
@@ -103,7 +104,10 @@ public class BuildsIntoQuestion : Question
             incorrectAnswerTitle.SetActive(true);
 
         foreach (var button in _answerButtons)
+        {
+            button.tooltipInclusions |= MultipleChoiceItemButton.TooltipField.Recipe;
             button.GiveFeedback();
+        }
 
         actionButtonPrompt.text = continuePromptText;
         await actionButton.OnClickAsync();

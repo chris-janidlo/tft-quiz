@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05b95570fbff124ab0c206cb78f987c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipInclusions: -1
   itemIcon: {fileID: 8617821056094711855}
   feedbackIcon: {fileID: 5583132683371966388}
   tier: {fileID: 8617821055175451859}
