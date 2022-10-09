@@ -88,8 +88,6 @@ public class MultipleChoiceItemButton : MonoBehaviour, ITooltipHoverable
     public void GiveFeedback()
     {
         feedbackIcon.sprite = feedbackIcons[CorrectnessState];
-        if (CorrectnessState is Correctness.IncorrectlyDeselected or Correctness.IncorrectlySelected)
-            Debug.Log($"{CorrectnessState}: {_item}");
     }
 
     private void OnButtonClick()
