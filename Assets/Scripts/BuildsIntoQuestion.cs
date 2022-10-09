@@ -102,6 +102,7 @@ public class BuildsIntoQuestion : Question
         {
             button.tooltipInclusions |= MultipleChoiceItemButton.TooltipField.Recipe;
             button.GiveFeedback();
+            button.Clickable = false;
         }
 
         actionButtonPrompt.text = continuePromptText;

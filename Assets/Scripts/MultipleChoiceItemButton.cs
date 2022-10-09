@@ -32,10 +32,17 @@ public class MultipleChoiceItemButton : MonoBehaviour, ITooltipHoverable
     [SerializeField] private Button button;
     [SerializeField] private Color selectedTint, deselectedTint;
     [SerializeField] private EnumMap<Correctness, Sprite> feedbackIcons;
-    private readonly StringBuilder _tooltipSB = new();
+
+    private readonly StringBuilder _tooltipSb = new();
 
     private Item _item;
     private bool _selected, _isAnswer;
+
+    public bool Clickable
+    {
+        get => button.interactable;
+        set => button.interactable = value;
+    }
 
     public Correctness CorrectnessState { get; private set; }
 
@@ -47,32 +54,32 @@ public class MultipleChoiceItemButton : MonoBehaviour, ITooltipHoverable
 
     public string GetTooltipText()
     {
-        _tooltipSB.Clear();
+        _tooltipSb.Clear();
 
         var crafted = _item as CraftedItem;
         var isCrafted = crafted != null;
 
         if (tooltipInclusions.HasFlag(TooltipField.Name))
         {
-            _tooltipSB.Append(_item.Name);
-            if (isCrafted && tooltipInclusions.HasFlag(TooltipField.Tier)) _tooltipSB.Append($" ({crafted.Tier} Tier)");
-            _tooltipSB.Append("\n\n");
+            _tooltipSb.Append(_item.Name);
+            if (isCrafted && tooltipInclusions.HasFlag(TooltipField.Tier)) _tooltipSb.Append($" ({crafted.Tier} Tier)");
+            _tooltipSb.Append("\n\n");
         }
 
         if (isCrafted && tooltipInclusions.HasFlag(TooltipField.Recipe))
         {
             foreach (var comp in crafted.Recipe)
             {
-                _tooltipSB.Append(comp.Name);
-                _tooltipSB.Append('\n');
+                _tooltipSb.Append(comp.Name);
+                _tooltipSb.Append('\n');
             }
 
-            _tooltipSB.Append('\n');
+            _tooltipSb.Append('\n');
         }
 
-        if (tooltipInclusions.HasFlag(TooltipField.Effect)) _tooltipSB.Append(_item.Effect);
+        if (tooltipInclusions.HasFlag(TooltipField.Effect)) _tooltipSb.Append(_item.Effect);
 
-        return _tooltipSB.ToString();
+        return _tooltipSb.ToString();
     }
 
     public void Initialize(Item item, bool isAnswer)
