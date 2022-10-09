@@ -36,14 +36,13 @@ public class BuildsIntoQuestion : Question
     [SerializeField] private Image componentPrefab;
 
     private List<MultipleChoiceItemButton> _answerButtons;
-    private bool _correct;
 
     private static ExclusionOptions ToFlag(Tier tier)
     {
         return (ExclusionOptions)(1 << (int)tier);
     }
 
-    public override async UniTask<bool> Ask()
+    public override async UniTask Ask()
     {
         correctAnswerTitle.SetActive(false);
         incorrectAnswerTitle.SetActive(false);
@@ -88,17 +87,13 @@ public class BuildsIntoQuestion : Question
 
         actionButtonPrompt.text = submitPromptText;
         await actionButton.OnClickAsync();
-
-        return _correct = !_answerButtons.Any(b => b.CorrectnessState is
-            MultipleChoiceItemButton.Correctness.IncorrectlyDeselected or
-            MultipleChoiceItemButton.Correctness.IncorrectlySelected);
     }
 
     public override async UniTask GiveFeedback()
     {
         prompt.SetActive(false);
 
-        if (_correct)
+        if (AnsweredCorrectly())
             correctAnswerTitle.SetActive(true);
         else
             incorrectAnswerTitle.SetActive(true);
@@ -111,5 +106,12 @@ public class BuildsIntoQuestion : Question
 
         actionButtonPrompt.text = continuePromptText;
         await actionButton.OnClickAsync();
+    }
+
+    public override bool AnsweredCorrectly()
+    {
+        return !_answerButtons.Any(b => b.CorrectnessState is
+            MultipleChoiceItemButton.Correctness.IncorrectlyDeselected or
+            MultipleChoiceItemButton.Correctness.IncorrectlySelected);
     }
 }

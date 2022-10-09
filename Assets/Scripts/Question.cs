@@ -3,10 +3,12 @@ using UnityEngine;
 
 public abstract class Question : MonoBehaviour
 {
-    public virtual UniTask<bool> Ask()
+    public virtual UniTask Ask()
     {
-        return UniTask.FromResult(true);
+        return UniTask.CompletedTask;
     }
+
+    public abstract bool AnsweredCorrectly();
 
     public virtual UniTask GiveFeedback()
     {

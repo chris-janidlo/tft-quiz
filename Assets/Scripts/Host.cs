@@ -65,7 +65,7 @@ public class Host : MonoBehaviour
         timer.Stop(); // in case it's still ticking
         // TODO: cancel task when timer runs out
 
-        if (answer.Status.IsCompleted() && answer.GetAwaiter().GetResult())
+        if (question.AnsweredCorrectly())
             roundState.RightAnswers++;
         else
             roundState.WrongAnswers++;
